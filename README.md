@@ -1,4 +1,4 @@
-LaTeX template for UiT exams. 
+LaTeX template for UiT exams at the Faculty of Science and Technology. 
 =========================
 
 I got tired of dealing with MS Word based exam templates that didn't work properly. Including source code in the documents was also a problem. 
