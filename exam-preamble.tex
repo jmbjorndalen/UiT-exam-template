@@ -27,6 +27,11 @@
 \usepackage{fancyhdr}
 \usepackage{enumerate}
 
+% minipage environments have problems spanning pages,
+% trying this as an alternative
+% http://texdoc.net/texmf-dist/doc/latex/tcolorbox/tcolorbox.pdf
+%\usepackage[skins,breakable]{tcolorbox}
+\usepackage[most]{tcolorbox}
 
 \usepackage{tikz}
 \usetikzlibrary{calc}   % for absolute positioning of figures on page
@@ -110,6 +115,7 @@
 
 \input{exam-content-info}
 
+% NB: they use the word rough paper for scratch/draft paper. 
 
 \ifdefined\examLangNo
 \def\examDefExa{Eksamen i}
@@ -155,7 +161,7 @@
 \def\examContactName{Contact person during the exam}
 \def\examMainTitle{EXAMINATION QUESTION PAPER} 
 \def\examGuideTitle{ASSESSMENT GUIDELINE}
-\def\examTPRhead{Faculty of science and technology} 
+\def\examTPRhead{Faculty of Science and Technology} 
 \def\examTypePaper{Type of \newline sheets \newline (squares/lines)}
 \def\examNumPagesInfo{Number of \newline pages incl. \newline cover page}
 \fi     
@@ -265,14 +271,10 @@
 \ifdefined\examIsGuide
   \newsavebox{\eguidesavebox}
   \newenvironment{eguide}{
-    \begin{lrbox}{\eguidesavebox}
-      %\begin{minipage}{0,99\textwidth}
-      \begin{minipage}{0,99\linewidth} % suggestion from Weihai
+      \begin{tcolorbox}[width=0.99\linewidth,breakable]
   }
   {
-      \end{minipage}
-    \end{lrbox}
-  \fcolorbox{blue!30}{gray!7}{\usebox{\eguidesavebox}}
+      \end{tcolorbox}
   }
 \else
   \excludecomment{eguide}
