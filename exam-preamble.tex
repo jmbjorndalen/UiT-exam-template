@@ -119,20 +119,21 @@
 
 \ifdefined\examLangNo
 \def\examDefExa{Eksamen i}
-\def\examDefExb{For eksamen i}
+\def\examDefExb{Kurskode}
 \def\examDateName{Dato}
+\def\examDateNameb{Eksamensdato}
 \def\examTimeName{Klokkeslett}
 \def\examPlaceName{Sted}
 \def\examPhoneName{Telefon/mobil}
+\def\examPhoneNameb{Telefon/e-mail}
 \def\examApprovedHelp{Tillatte \newline hjelpemidler}
 % couldn't get doublespacing or other things from the setspace package to work, so we're using a manual fix for now (deadline approaching)
-\def\examNoScratch{NB! Det er ikke tillatt å levere inn kladdepapir som del av \vspace{0.2cm} \newline eksamensbesvarelsen. Hvis det likevel leveres inn, vil \vspace{0.2cm} \newline  kladdepapiret bli holdt tilbake og ikke bli sendt til sensur.}
+\def\examNoScratch{NB! Det er ikke tillatt å levere inn kladdepapir som del av eksamensbesvarelsen. \vspace{0.2cm} \newline Hvis det likevel leveres inn, vil kladdepapiret bli holdt tilbake og ikke bli sendt til sensur.}
 \def\examLogoa{logo/logo-uitnavnetrekk-cropped.pdf}
 \def\examLogob{logo/Logo_norsk_pos_crop.pdf}
 \def\examNpagesA{Oppgavesettet er på}
 \def\examNpagesB{sider inklusiv forside}
-\def\examGuideNPA{Sensorveiledningen er på}
-\def\examGuideNPB{sider inklusiv forside}
+\def\examGuideNP{Antall sider: \newline inkl. forside}
 \def\examLecturerLead{Fagperson/intern sensor}
 \def\examContactName{Kontaktperson under eksamen}
 \def\examMainTitle{EKSAMENSOPPGAVE}
@@ -146,17 +147,18 @@
 \def\examDefExa{Exam in}
 \def\examDefExb{For exam in}
 \def\examDateName{Date}
+\def\examDateNameb{Date}
 \def\examTimeName{Time}
 \def\examPlaceName{Place}
 \def\examPhoneName{Phone}
+\def\examPhoneNameb{Phone/e-mail}
 \def\examApprovedHelp{Approved aids}
 \def\examNoScratch{NB! It is not allowed to submit scratch paper along with the answer sheets. If you do submit scratch paper, it will not be evaluated.}
 \def\examLogoa{logo/logo-uitnavnetrekk-eng-cropped.pdf}
 \def\examLogob{logo/Logo_eng_pos_crop.pdf}
 \def\examNpagesA{The exam contains}
 \def\examNpagesB{pages, including this cover page} % added a comma as well. Clarifies the meaning (without the comma it sounds like we have X pages that include this cover page)
-\def\examGuideNPA{The assessment guideline contains}
-\def\examGuideNPB{pages, including this cover page}
+\def\examGuideNP{Contains pages: \newline including this cover page}
 \def\examLecturerLead{Contact person}
 \def\examContactName{Contact person during the exam}
 \def\examMainTitle{EXAMINATION QUESTION \par PAPER} 
@@ -200,32 +202,29 @@
 
 \ifdefined\examIsGuide
 %------------------------------------------------------------ Guide --------
-\begin{center}
-{\Huge \textbf{\examTitle}}
-\end{center}
+%\begin{center}
+\vspace{2cm}
 
-\vspace{1cm}
-\large
+{\Huge \textbf{\examTitle}}
+%\end{center}
+
+\vspace{0.4cm}
+%\large
 
 % @{} before the first column removes the small indentation that it gets automatically
-\textbf{
-\begin{tabular}{@{}ll} \\
-  \examDefExb:    &  \examCourseName \\
-  \examDateName:  &  \examDate \\
+%\textbf{
+\begin{tabular}{@{}p{3cm}l} \\
+  \examDefExb:    &  \examCourseName \\ [0.5cm]
+  \examDateNameb:  &  \examDate \\ [0.5cm]
+  \examLecturerLead: & \examLecturer. \\ [1.0cm]
+  \examPhoneNameb: & \examPhone  \\  [0.5cm]
+  \examGuideNP  &  \zpageref{LastPage} \\ [0.5cm]
 \end{tabular}
 \vspace{4cm}
-}
-
-\textbf{\examGuideNPA\ \zpageref{LastPage}\ \examGuideNPB}
+%}
 
 \vspace{1cm}
 
-\textbf{
-\begin{tabular}{@{}l}  \\
-\examLecturerLead: \examLecturer. \\
-\examPhoneName: \examPhone   % her burde det ha vært e-mail også. 
-\end{tabular}
-}
 
 \else        %------------------------------------------------------------ Exam --------
 \begin{center}
@@ -246,14 +245,14 @@
 \examApprovedHelp:     & \examApprovedHelpList \\ \hline
 \examTypePaper:        & \examTypePaperAllowed \\ \hline
 \examNumPagesInfo:     & \zpageref{LastPage} \\ \hline
-\examContactName:      & \examLecturer \\ \hline
+\examContactName:      & \examLecturer \\
 \examPhoneName:        & \examPhone \\ \hline
-                       & \examVisit \\ \hline
+\multicolumn{2}{|p{15cm}|}{\examVisit} \\ \hline
 \end{tabular}
 }
 
 
-\textbf{\Large \textcolor{red}{\examNoScratch}}
+\textbf{\textcolor{red}{\examNoScratch}}
 
 %\textbf{\examNoScratch}
 \fi % ------------------------------------------------------------   diff end (exam or guide)
