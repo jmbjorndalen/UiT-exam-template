@@ -6,8 +6,12 @@
 
 % to get helvetica fonts (similar to the myriad) in pdflatex. 
 % http://tex.stackexchange.com/questions/121061/working-with-arial-or-helvetica-fonts
-\usepackage[scaled]{helvet}
-\renewcommand\familydefault{\sfdefault} 
+%\usepackage[scaled]{helvet}
+% 2019 - the styles now use times new roman
+%\usepackage{times}
+%\usepackage{mathptmx}
+\usepackage{newtxtext}
+%\renewcommand\familydefault{\sfdefault} 
 \usepackage[T1]{fontenc}
 
 % for \fontsize local font size
@@ -153,18 +157,18 @@
 \def\examPhoneName{Phone}
 \def\examPhoneNameb{Phone/e-mail}
 \def\examApprovedHelp{Approved aids}
-\def\examNoScratch{NB! It is not allowed to submit scratch paper along with the answer sheets. If you do submit scratch paper, it will not be evaluated.}
+\def\examNoScratch{NB! It is not allowed to submit scratch paper along with the answer sheets. \newline If you do submit scratch paper, it will not be evaluated.}
 \def\examLogoa{logo/logo-uitnavnetrekk-eng-cropped.pdf}
 \def\examLogob{logo/Logo_eng_pos_crop.pdf}
 \def\examNpagesA{The exam contains}
 \def\examNpagesB{pages, including this cover page} % added a comma as well. Clarifies the meaning (without the comma it sounds like we have X pages that include this cover page)
 \def\examGuideNP{Contains pages: \newline including this cover page}
 \def\examLecturerLead{Contact person}
-\def\examContactName{Contact person during the exam}
-\def\examMainTitle{EXAMINATION QUESTION \par PAPER} 
+\def\examContactName{Contact \newline person during \newline the exam}
+\def\examMainTitle{EXAMINATION QUESTION PAPER} 
 \def\examGuideTitle{ASSESSMENT GUIDELINE}
 \def\examTPRhead{Faculty of Science and Technology} 
-\def\examTypePaper{Type of \newline sheets \newline (squares/lines)}
+\def\examTypePaper{Type of sheets \newline (squares/lines)}
 \def\examNumPagesInfo{Number of \newline pages incl. \newline cover page}
 \fi     
 
@@ -227,17 +231,20 @@
 
 
 \else        %------------------------------------------------------------ Exam --------
+\vspace{1.5cm}
+
 \begin{center}
-{\fontsize{35}{50}\selectfont \textbf{ \examTitle}}
+  % fontsize,baselineskip (set bs to about 1.2x fontsize)
+{\fontsize{27}{33}\selectfont \textbf{ \examTitle}}
 \end{center}
 
-\vspace{0.5cm}
+\vspace{0.1cm}
 \large
 
 
 % @{} before the first column removes the small indentation that it gets automatically
 {\def\arraystretch{2}\tabcolsep=10pt
-\begin{tabular}{@{}|p{3cm}|p{12cm}|} \hline
+\begin{tabular}{@{}|p{2.5cm}|p{11.5cm}|} \hline
 \examDefExa:           & \examCourseName \\ \hline
 \examDateName:         & \examDate \\ \hline
 \examTimeName: 	       & \examTime \\ \hline
@@ -247,7 +254,8 @@
 \examNumPagesInfo:     & \zpageref{LastPage} \\ \hline
 \examContactName:      & \examLecturer \\
 \examPhoneName:        & \examPhone \\ \hline
-\multicolumn{2}{|p{15cm}|}{\examVisit} \\ \hline
+                       & \examVisit \\ \hline
+%\multicolumn{2}{|p{15cm}|}{\examVisit} \\ \hline
 \end{tabular}
 }
 
@@ -258,8 +266,8 @@
 \fi % ------------------------------------------------------------   diff end (exam or guide)
 
 \begin{tikzpicture}[remember picture,overlay]
-  \node[anchor=south east,inner sep=0pt] at ($(current page.south east)+(-2cm,2cm)$) {
-     \includegraphics[width=2cm]{\examLogob} 
+  \node[anchor=south east,inner sep=0pt] at ($(current page.south east)+(-1cm,1.2cm)$) {
+     \includegraphics[width=1.5cm]{\examLogob} 
   };
 \end{tikzpicture}
 
