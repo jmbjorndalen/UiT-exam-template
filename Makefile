@@ -5,12 +5,14 @@ TARGETS = exam.pdf exam-with-guide.pdf
 
 all: $(TARGETS)
 
-.tex.pdf: 
-	pdflatex $<
-	pdflatex $<
+.tex.pdf:
+	mkdir -p output
+	pdflatex -output-directory=output $<
+	pdflatex -output-directory=output $<
+	rm output/*.aux output/*.log
 
 exam.pdf : *.tex 
 exam-with-guide.pdf : *.tex 
 
 clean:
-	rm *.aux *.log $(TARGETS)
+	rm -f output/*.aux output/*.log output/*.pdf
