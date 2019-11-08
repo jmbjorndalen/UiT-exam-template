@@ -137,9 +137,14 @@
 \def\examLogob{logo/Logo_norsk_pos_crop.pdf}
 \def\examNpagesA{Oppgavesettet er på}
 \def\examNpagesB{sider inklusiv forside}
-\def\examGuideNP{Antall sider: \newline inkl. forside}
+\def\examGuideNP{Antall sider \newline inkl. forside}
 \def\examLecturerLead{Fagperson/intern sensor}
-\def\examContactName{Kontaktperson under eksamen}
+\def\examContactName{Kontaktperson under \newline eksamen}
+\ifdefined\examVisitTime
+\def\examVisit{Vil det bli gått oppklaringsrunde i eksamenslokalet? \newline \textbf{JA, ca. kl.: \examVisitTime \newline NEI: }}
+\else
+\def\examVisit{Vil det bli gått oppklaringsrunde i eksamenslokalet? \newline \textbf{JA, ca. kl.: \newline NEI: X }}
+\fi
 \def\examMainTitle{EKSAMENSOPPGAVE}
 \def\examGuideTitle{SENSORVEILEDNING}
 \def\examTPRhead{Fakultet for naturvitenskap og teknologi}
@@ -165,6 +170,11 @@
 \def\examGuideNP{Contains pages: \newline including this cover page}
 \def\examLecturerLead{Contact person}
 \def\examContactName{Contact \newline person during \newline the exam}
+\ifdefined\examVisitTime
+\def\examVisit{Will a lecturer/person in charge visit the venue? \newline \textbf{YES, approx. time: \examVisitTime \newline NO:} }
+\else
+\def\examVisit{Will a lecturer/person in charge visit the venue? \newline \textbf{YES, approx. time:  \newline NO: X} }
+\fi
 \def\examMainTitle{EXAMINATION QUESTION PAPER} 
 \def\examGuideTitle{ASSESSMENT GUIDELINE}
 \def\examTPRhead{Faculty of Science and Technology} 
@@ -253,9 +263,18 @@
 \examTypePaper:        & \examTypePaperAllowed \\ \hline
 \examNumPagesInfo:     & \zpageref{LastPage} \\ \hline
 \examContactName:      & \examLecturer \\
+% line between contact name and phone only for english template
+\ifdefined\examLangEng
+\hline
+\fi
 \examPhoneName:        & \examPhone \\ \hline
+% do not span columns for english template
+\ifdefined\examLangEng
                        & \examVisit \\ \hline
-%\multicolumn{2}{|p{15cm}|}{\examVisit} \\ \hline
+% but span two columns for norwegian template
+\else
+\multicolumn{2}{|p{15cm}|}{\examVisit} \\ \hline
+\fi
 \end{tabular}
 }
 
